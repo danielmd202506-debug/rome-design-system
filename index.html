@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rome Design System</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;--surface:#fff;--surface-2:#f2f6fc;--text:#111827;--muted:#5f6b7a;--line:#d5dbE7;
+      --blue-700:#0972d3;--blue-600:#1f84e7;--blue-100:#eaf4ff;--green:#037f0c;--red:#d91515;--orange:#b65c00;
+      --purple:#7a35d8;--teal:#008296;--shadow:0 1px 2px rgba(15,23,42,.08),0 8px 24px rgba(15,23,42,.06);
+      --radius:8px;--mono:"SFMono-Regular","Consolas","Liberation Mono",monospace;
+      font-family:"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-size:14px;line-height:1.55}
+    .app{display:grid;grid-template-columns:276px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;background:#0f172a;color:#dbeafe;padding:20px 16px;overflow:auto}.brand{display:flex;align-items:center;gap:10px;margin-bottom:22px}.mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#0972d3,#37bdf8);display:grid;place-items:center;color:#fff;font-weight:900}.brand b{display:block;color:#fff;font-size:16px}.brand span{display:block;color:#9fb5d1;font-size:12px}
+    .side a{display:block;color:#c8d7ea;text-decoration:none;padding:8px 10px;border-radius:6px;margin:2px 0}.side a:hover{background:#1e293b;color:#fff}.side h4{margin:20px 10px 8px;color:#7dd3fc;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    .main{min-width:0}.top{position:sticky;top:0;z-index:5;height:58px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px}.crumb{color:var(--muted)}.actions{display:flex;gap:10px}
+    .btn{border:1px solid #8795a8;background:#fff;border-radius:6px;padding:7px 13px;font-weight:700;color:#172033;cursor:pointer}.btn.primary{border-color:var(--blue-700);background:var(--blue-700);color:#fff}.btn:hover{box-shadow:0 0 0 3px rgba(9,114,211,.12)}
+    .hero{padding:42px 44px 28px;background:linear-gradient(180deg,#fff,#f4f8ff);border-bottom:1px solid var(--line)}.eyebrow{color:var(--blue-700);font-weight:800;margin-bottom:8px}.hero h1{margin:0;font-size:42px;line-height:1.08;letter-spacing:0}.hero p{max-width:880px;margin:16px 0 0;color:#465467;font-size:16px}
+    .content{padding:24px 44px 56px}.section{margin:0 0 28px}.section-head{display:flex;align-items:end;justify-content:space-between;border-bottom:2px solid #9ecfff;padding-bottom:10px;margin-bottom:16px}.section h2{margin:0;font-size:24px}.section-head p{margin:0;color:var(--muted)}.grid{display:grid;gap:14px}.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}.card h3{margin:0 0 10px;font-size:17px}.muted{color:var(--muted)}.code{font-family:var(--mono);background:#eef4ff;border:1px solid #d7e6ff;border-radius:6px;padding:10px;color:#19345c;white-space:pre-wrap}
+    .token-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}.token-table th,.token-table td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left}.token-table th{background:#f3f7fd;color:#334155;font-size:12px}.token-table tr:last-child td{border-bottom:0}
+    .swatches{display:grid;gap:10px}.swatch{display:grid;grid-template-columns:120px repeat(5,1fr);border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}.swatch-title{padding:12px;background:#f8fafc;font-weight:800}.tone{min-height:58px;padding:8px;color:#fff;font-size:12px;display:flex;align-items:end}.tone.light{color:#1f2937}
+    .type-sample{display:grid;gap:10px}.type-row{display:grid;grid-template-columns:160px 1fr 90px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0}.h1{font-size:36px;font-weight:800}.h2{font-size:28px;font-weight:800}.h3{font-size:20px;font-weight:800}.body{font-size:14px}.small{font-size:12px}
+    .space{display:flex;align-items:center;gap:12px;margin:9px 0}.space i{display:block;height:18px;background:var(--blue-600);border-radius:3px}.icon-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}.icon{height:58px;background:#fff;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;color:#334155}.icon span{font-size:22px}
+    .component-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.input,.select,textarea{border:1px solid #8795a8;border-radius:6px;background:#fff;padding:8px 10px;min-width:220px;font:inherit}.input:focus,.select:focus,textarea:focus{outline:3px solid rgba(9,114,211,.18);border-color:var(--blue-700)}.field{display:grid;gap:6px;margin:10px 0}.field label{font-weight:800}.help{color:var(--muted);font-size:12px}.error{color:var(--red)}
+    .tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:800;background:#eef4ff;color:#1158a5}.tag.green{background:#e9f7ea;color:#037f0c}.tag.red{background:#fff1f1;color:#d91515}.tag.orange{background:#fff6e5;color:#9d4a00}
+    .alert{border:1px solid;border-radius:8px;padding:12px 14px;margin:8px 0;background:#fff}.alert.info{border-color:#8cc5ff;background:#f1f8ff}.alert.success{border-color:#8bd99b;background:#f2fbf3}.alert.warn{border-color:#ffd28a;background:#fff8e8}.alert.danger{border-color:#ffb4b4;background:#fff5f5}
+    .stepper{display:flex;align-items:center;justify-content:space-between;margin:18px 0}.step{display:grid;justify-items:center;gap:7px;color:#64748b;position:relative;flex:1}.step:not(:last-child):after{content:"";position:absolute;left:56%;right:-44%;top:13px;height:2px;background:#cbd5e1}.dot{width:28px;height:28px;border-radius:50%;background:#e2e8f0;display:grid;place-items:center;color:#334155;font-weight:900;z-index:1}.step.done .dot,.step.active .dot{background:var(--blue-700);color:#fff}.step.done:after{background:var(--blue-700)}
+    .empty{min-height:170px;border:1px dashed #b8c4d4;border-radius:8px;background:#fafcff;display:grid;place-items:center;text-align:center;color:#667085}.empty .glyph{font-size:38px;color:#9fb5d1}
+    .dialog{width:360px;margin:auto;background:#fff;border-radius:10px;border:1px solid var(--line);box-shadow:0 18px 48px rgba(15,23,42,.22);padding:18px}.dialog h3{margin:0 0 8px}.dialog-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+    .loader{width:34px;height:34px;border:4px solid #dbeafe;border-top-color:var(--blue-700);border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .cloud-note{background:#eef6ff;border-left:4px solid var(--blue-700);padding:13px 15px;color:#334155}
+    @media(max-width:980px){.app{grid-template-columns:1fr}.side{position:relative;height:auto}.top{position:relative}.content,.hero{padding-left:20px;padding-right:20px}.cols-2,.cols-3,.cols-4{grid-template-columns:1fr}.swatch{grid-template-columns:1fr}.icon-grid{grid-template-columns:repeat(4,1fr)}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="mark">R</div><div><b>Rome Design System</b><span>罗马广场体验规范</span></div></div>
+    <h4>Foundation</h4>
+    <a href="#principles">设计原则</a><a href="#colors">色彩系统</a><a href="#typography">字体规范</a><a href="#spacing">间距与布局</a><a href="#icons">图标规范</a>
+    <h4>Components</h4>
+    <a href="#buttons">按钮</a><a href="#forms">表单</a><a href="#tags">标签与状态</a><a href="#cards">卡片与表格</a><a href="#feedback">反馈与引导</a>
+    <h4>Patterns</h4>
+    <a href="#empty">空状态</a><a href="#loading">Loading</a><a href="#dialog">Dialog</a><a href="#confirm">Confirm / Info</a>
+  </aside>
+  <main class="main">
+    <div class="top"><div class="crumb">Design System / Rome v1.0</div><div class="actions"><button class="btn">下载规范</button><button class="btn primary">开始使用</button></div></div>
+    <section class="hero">
+      <div class="eyebrow">Cloud operations inspired, Rome branded</div>
+      <h1>Rome Design System<br>罗马广场体验规范网站</h1>
+      <p>基于罗马广场高保真规范图重建，并参考 AWS Cloudscape 的企业级控制台体验：清晰的信息架构、紧凑的操作密度、明确的状态反馈，以及面向复杂业务系统的组件规范。</p>
+    </section>
+    <div class="content">
+      <section id="principles" class="section">
+        <div class="section-head"><h2>01. 设计原则</h2><p>面向后台、经营、供应链与平台型产品</p></div>
+        <div class="grid cols-4">
+          <div class="card"><h3>清晰优先</h3><p class="muted">层级、状态和下一步动作必须一眼可识别，避免装饰压过信息。</p></div>
+          <div class="card"><h3>密度可控</h3><p class="muted">默认采用中高信息密度；表格、筛选和卡片保持稳定节奏。</p></div>
+          <div class="card"><h3>状态显性</h3><p class="muted">成功、警告、错误、进行中使用固定颜色和图标，不依赖颜色单独表达。</p></div>
+          <div class="card"><h3>一致可复用</h3><p class="muted">布局、按钮、表单、反馈组件以 token 驱动，降低页面之间的认知切换。</p></div>
+        </div>
+      </section>
+
+      <section id="colors" class="section">
+        <div class="section-head"><h2>02. 色彩系统</h2><p>主色、语义色、中性色与渐变</p></div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-title">Primary Blue</div><div class="tone" style="background:#033160">900</div><div class="tone" style="background:#064f8f">800</div><div class="tone" style="background:#0972d3">700</div><div class="tone" style="background:#1f84e7">600</div><div class="tone light" style="background:#eaf4ff">100</div></div>
+          <div class="swatch"><div class="swatch-title">Success</div><div class="tone" style="background:#024d08">900</div><div class="tone" style="background:#037f0c">700</div><div class="tone" style="background:#0cae1a">600</div><div class="tone light" style="background:#e9f7ea">100</div><div class="tone light" style="background:#f6fff7">50</div></div>
+          <div class="swatch"><div class="swatch-title">Warning</div><div class="tone" style="background:#7a3b00">900</div><div class="tone" style="background:#b65c00">700</div><div class="tone" style="background:#ff9900">500</div><div class="tone light" style="background:#fff6e5">100</div><div class="tone light" style="background:#fffaf0">50</div></div>
+          <div class="swatch"><div class="swatch-title">Danger</div><div class="tone" style="background:#7c1010">900</div><div class="tone" style="background:#d91515">700</div><div class="tone" style="background:#ff5b5b">500</div><div class="tone light" style="background:#fff1f1">100</div><div class="tone light" style="background:#fff8f8">50</div></div>
+          <div class="swatch"><div class="swatch-title">Neutral</div><div class="tone" style="background:#111827">900</div><div class="tone" style="background:#354052">700</div><div class="tone" style="background:#697386">500</div><div class="tone light" style="background:#d5dbe7">300</div><div class="tone light" style="background:#f6f8fb">50</div></div>
+        </div>
+      </section>
+
+      <section id="typography" class="section">
+        <div class="section-head"><h2>03. 字体规范</h2><p>中文优先 Source Han Sans SC</p></div>
+        <div class="card type-sample">
+          <div class="type-row"><b>Page title</b><div class="h1">罗马广场运营控制台</div><code>36 / 44 / 800</code></div>
+          <div class="type-row"><b>Section title</b><div class="h2">组件与模式</div><code>28 / 36 / 800</code></div>
+          <div class="type-row"><b>Card title</b><div class="h3">订单状态分布</div><code>20 / 28 / 800</code></div>
+          <div class="type-row"><b>Body</b><div class="body">用于表格、表单、说明文本和业务信息。</div><code>14 / 22 / 400</code></div>
+          <div class="type-row"><b>Caption</b><div class="small">辅助说明、时间戳、字段帮助文本。</div><code>12 / 18 / 400</code></div>
+        </div>
+      </section>
+
+      <section id="spacing" class="section">
+        <div class="section-head"><h2>04. 间距与布局</h2><p>4px 基础栅格，8px 作为常用步进</p></div>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>Spacing scale</h3>
+            <div class="space"><i style="width:4px"></i><span>4px / 紧凑元素内距</span></div>
+            <div class="space"><i style="width:8px"></i><span>8px / 控件组间距</span></div>
+            <div class="space"><i style="width:16px"></i><span>16px / 卡片内距</span></div>
+            <div class="space"><i style="width:24px"></i><span>24px / 区块间距</span></div>
+            <div class="space"><i style="width:32px"></i><span>32px / 页面主间距</span></div>
+          </div>
+          <div class="card"><h3>Layout rules</h3><p class="muted">参考 Cloudscape 的控制台结构：左侧导航、顶部工具栏、主内容区和可选右侧辅助栏。页面宽度超过 1280px 时内容区保持最大可读宽度；业务大屏可使用全宽布局。</p><div class="code">page = sideNav + topBar + content
+content padding = 24 / 32 / 44
+card radius = 8px
+table row height = 40px</div></div>
+        </div>
+      </section>
+
+      <section id="icons" class="section">
+        <div class="section-head"><h2>05. 图标规范</h2><p>线性图标，表达动作与状态</p></div>
+        <div class="icon-grid">
+          <div class="icon"><span>⌂</span></div><div class="icon"><span>☑</span></div><div class="icon"><span>⚙</span></div><div class="icon"><span>⟳</span></div><div class="icon"><span>⌕</span></div><div class="icon"><span>▤</span></div><div class="icon"><span>✕</span></div><div class="icon"><span>!</span></div>
+          <div class="icon"><span>＋</span></div><div class="icon"><span>−</span></div><div class="icon"><span>↗</span></div><div class="icon"><span>↧</span></div><div class="icon"><span>◷</span></div><div class="icon"><span>◇</span></div><div class="icon"><span>☰</span></div><div class="icon"><span>●</span></div>
+        </div>
+      </section>
+
+      <section id="buttons" class="section">
+        <div class="section-head"><h2>06. Button</h2><p>主操作、次操作、危险操作</p></div>
+        <div class="card component-row"><button class="btn primary">创建资源</button><button class="btn">取消</button><button class="btn">下载</button><button class="btn" style="border-color:#d91515;color:#d91515">删除</button><button class="btn" disabled>禁用</button></div>
+      </section>
+
+      <section id="forms" class="section">
+        <div class="section-head"><h2>07. Form</h2><p>字段、帮助文本、校验和输入组合</p></div>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>基础表单</h3>
+            <div class="field"><label>资源名称</label><input class="input" value="rome-order-center" /><div class="help">使用小写字母、数字和连接符。</div></div>
+            <div class="field"><label>区域</label><select class="select"><option>华南区域</option><option>中东区域</option></select></div>
+            <div class="field"><label>描述</label><textarea rows="4">用于供应链订单流程的运营监控页面。</textarea></div>
+            <button class="btn primary">保存配置</button>
+          </div>
+          <div class="card">
+            <h3>校验状态</h3>
+            <div class="field"><label>API Endpoint</label><input class="input" value="https://api.rome.example" /><div class="help">连接正常。</div></div>
+            <div class="field"><label>Webhook Secret</label><input class="input" value="" style="border-color:#d91515" /><div class="help error">Secret 不能为空。</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tags" class="section">
+        <div class="section-head"><h2>08. Tag / Status</h2><p>对象分类、流程状态和风险等级</p></div>
+        <div class="card component-row"><span class="tag">处理中</span><span class="tag green">正常</span><span class="tag orange">需关注</span><span class="tag red">异常</span><span class="tag">Beta</span><span class="tag green">已发布</span></div>
+      </section>
+
+      <section id="cards" class="section">
+        <div class="section-head"><h2>09. Card / Table</h2><p>业务信息承载容器</p></div>
+        <div class="grid cols-2">
+          <div class="card"><h3>Metric card</h3><p class="muted">订单总数</p><div style="font-size:32px;font-weight:900">1,248</div><span class="tag green">环比 +12.5%</span></div>
+          <div class="card"><h3>Data table</h3><table class="token-table"><tr><th>名称</th><th>状态</th><th>负责人</th></tr><tr><td>订单中心</td><td><span class="tag green">正常</span></td><td>Ops</td></tr><tr><td>供应链同步</td><td><span class="tag orange">延迟</span></td><td>TMS</td></tr><tr><td>库存预警</td><td><span class="tag red">异常</span></td><td>WMS</td></tr></table></div>
+        </div>
+      </section>
+
+      <section id="feedback" class="section">
+        <div class="section-head"><h2>10. Feedback</h2><p>可恢复、可解释、可追踪</p></div>
+        <div class="grid cols-2">
+          <div class="card"><div class="alert info"><b>信息提示</b><br>数据将在 60 秒后自动刷新。</div><div class="alert success"><b>操作成功</b><br>配置已保存并同步。</div></div>
+          <div class="card"><div class="alert warn"><b>注意</b><br>部分订单 ETA 存在延迟风险。</div><div class="alert danger"><b>错误</b><br>接口鉴权失败，请检查 token。</div></div>
+        </div>
+      </section>
+
+      <section id="empty" class="section">
+        <div class="section-head"><h2>11. Empty State</h2><p>解释原因并提供下一步动作</p></div>
+        <div class="grid cols-3"><div class="empty"><div><div class="glyph">⌕</div><b>暂无搜索结果</b><p>尝试调整筛选条件。</p><button class="btn">清空筛选</button></div></div><div class="empty"><div><div class="glyph">▤</div><b>暂无数据</b><p>连接数据源后自动展示。</p><button class="btn primary">添加数据源</button></div></div><div class="empty"><div><div class="glyph">!</div><b>加载失败</b><p>服务暂不可用。</p><button class="btn">重试</button></div></div></div>
+      </section>
+
+      <section id="loading" class="section">
+        <div class="section-head"><h2>12. Loading</h2><p>短等待用 spinner，长等待给进度说明</p></div>
+        <div class="grid cols-2"><div class="card component-row"><div class="loader"></div><span>正在加载资源...</span></div><div class="card"><div class="cloud-note">超过 3 秒的等待需要展示状态文本；超过 10 秒建议给出取消或后台运行选项。</div></div></div>
+      </section>
+
+      <section id="dialog" class="section">
+        <div class="section-head"><h2>13. Dialog</h2><p>用于创建、编辑和信息收集</p></div>
+        <div class="card"><div class="dialog"><h3>创建监控任务</h3><p class="muted">填写任务名称和刷新频率。</p><div class="field"><label>任务名称</label><input class="input" value="订单准时率监控" /></div><div class="field"><label>刷新频率</label><select class="select"><option>60 秒</option><option>5 分钟</option></select></div><div class="dialog-foot"><button class="btn">取消</button><button class="btn primary">创建</button></div></div></div>
+      </section>
+
+      <section id="confirm" class="section">
+        <div class="section-head"><h2>14. Confirm / Info</h2><p>确认风险，说明影响范围</p></div>
+        <div class="grid cols-2">
+          <div class="card"><div class="dialog"><h3>删除规则？</h3><p class="muted">删除后该规则不再触发库存预警，此操作不可撤销。</p><div class="dialog-foot"><button class="btn">取消</button><button class="btn" style="border-color:#d91515;color:#d91515">删除</button></div></div></div>
+          <div class="card"><div class="dialog"><h3>同步完成</h3><p class="muted">已同步 24 个数据集，2 个数据集因权限限制跳过。</p><div class="dialog-foot"><button class="btn primary">知道了</button></div></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+</body>
+</html>
