@@ -13,9 +13,9 @@
       font-family:"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;
     }
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-size:14px;line-height:1.55}
-    .app{display:grid;grid-template-columns:276px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;background:#0f172a;color:#dbeafe;padding:20px 16px;overflow:auto}.brand{display:flex;align-items:center;gap:10px;margin-bottom:22px}.mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#0972d3,#37bdf8);display:grid;place-items:center;color:#fff;font-weight:900}.brand b{display:block;color:#fff;font-size:16px}.brand span{display:block;color:#9fb5d1;font-size:12px}
-    .side a{display:block;color:#c8d7ea;text-decoration:none;padding:8px 10px;border-radius:6px;margin:2px 0}.side a:hover{background:#1e293b;color:#fff}.side h4{margin:20px 10px 8px;color:#7dd3fc;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-    .main{min-width:0}.top{position:sticky;top:0;z-index:5;height:58px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px}.crumb{color:var(--muted)}.actions{display:flex;gap:10px}
+    .app{min-height:100vh}.top{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 28px}.topbar{height:58px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#0972d3,#37bdf8);display:grid;place-items:center;color:#fff;font-weight:900}.brand b{display:block;color:#111827;font-size:16px}.brand span{display:block;color:#697386;font-size:12px}
+    .nav{display:flex;gap:4px;overflow:auto;border-top:1px solid #eef2f7;padding:8px 0}.nav a{white-space:nowrap;color:#354052;text-decoration:none;padding:8px 10px;border-radius:6px;font-weight:700;font-size:13px}.nav a:hover{background:#eef6ff;color:#0972d3}
+    .main{min-width:0}.crumb{color:var(--muted)}
     .btn{border:1px solid #8795a8;background:#fff;border-radius:6px;padding:7px 13px;font-weight:700;color:#172033;cursor:pointer}.btn.primary{border-color:var(--blue-700);background:var(--blue-700);color:#fff}.btn:hover{box-shadow:0 0 0 3px rgba(9,114,211,.12)}
     .hero{padding:42px 44px 28px;background:linear-gradient(180deg,#fff,#f4f8ff);border-bottom:1px solid var(--line)}.eyebrow{color:var(--blue-700);font-weight:800;margin-bottom:8px}.hero h1{margin:0;font-size:42px;line-height:1.08;letter-spacing:0}.hero p{max-width:880px;margin:16px 0 0;color:#465467;font-size:16px}
     .content{padding:24px 44px 56px}.section{margin:0 0 28px}.section-head{display:flex;align-items:end;justify-content:space-between;border-bottom:2px solid #9ecfff;padding-bottom:10px;margin-bottom:16px}.section h2{margin:0;font-size:24px}.section-head p{margin:0;color:var(--muted)}.grid{display:grid;gap:14px}.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -32,22 +32,20 @@
     .dialog{width:360px;margin:auto;background:#fff;border-radius:10px;border:1px solid var(--line);box-shadow:0 18px 48px rgba(15,23,42,.22);padding:18px}.dialog h3{margin:0 0 8px}.dialog-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
     .loader{width:34px;height:34px;border:4px solid #dbeafe;border-top-color:var(--blue-700);border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
     .cloud-note{background:#eef6ff;border-left:4px solid var(--blue-700);padding:13px 15px;color:#334155}
-    @media(max-width:980px){.app{grid-template-columns:1fr}.side{position:relative;height:auto}.top{position:relative}.content,.hero{padding-left:20px;padding-right:20px}.cols-2,.cols-3,.cols-4{grid-template-columns:1fr}.swatch{grid-template-columns:1fr}.icon-grid{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:980px){.top{position:relative;padding:0 16px}.topbar{height:auto;padding:12px 0;align-items:flex-start}.content,.hero{padding-left:20px;padding-right:20px}.cols-2,.cols-3,.cols-4{grid-template-columns:1fr}.swatch{grid-template-columns:1fr}.icon-grid{grid-template-columns:repeat(4,1fr)}}
   </style>
 </head>
 <body>
 <div class="app">
-  <aside class="side">
-    <div class="brand"><div class="mark">R</div><div><b>Rome Design System</b><span>罗马广场体验规范</span></div></div>
-    <h4>Foundation</h4>
-    <a href="#principles">设计原则</a><a href="#responsive">多屏适配</a><a href="#colors">色彩系统</a><a href="#typography">字体规范</a><a href="#spacing">间距与布局</a><a href="#icons">图标规范</a>
-    <h4>Components</h4>
-    <a href="#buttons">按钮</a><a href="#forms">表单</a><a href="#tags">标签与状态</a><a href="#cards">卡片与表格</a><a href="#feedback">反馈与引导</a>
-    <h4>Patterns</h4>
-    <a href="#empty">空状态</a><a href="#loading">Loading</a><a href="#dialog">Dialog</a><a href="#confirm">Confirm / Info</a>
-  </aside>
   <main class="main">
-    <div class="top"><div class="crumb">Design System / Rome v1.0</div><div class="actions"><button class="btn">下载规范</button><button class="btn primary">开始使用</button></div></div>
+    <div class="top">
+      <div class="topbar"><div class="brand"><div class="mark">R</div><div><b>Rome Design System</b><span>罗马广场体验规范</span></div></div><div class="crumb">Design System / Rome v1.0</div></div>
+      <nav class="nav">
+        <a href="#principles">设计原则</a><a href="#responsive">多屏适配</a><a href="#colors">色彩系统</a><a href="#typography">字体规范</a><a href="#spacing">间距与布局</a><a href="#icons">图标规范</a>
+        <a href="#buttons">按钮</a><a href="#forms">表单</a><a href="#tags">标签与状态</a><a href="#cards">卡片与表格</a><a href="#feedback">反馈与引导</a>
+        <a href="#empty">空状态</a><a href="#loading">Loading</a><a href="#dialog">Dialog</a><a href="#confirm">Confirm / Info</a>
+      </nav>
+    </div>
     <section class="hero">
       <div class="eyebrow">Cloud operations inspired, Rome branded</div>
       <h1>Rome Design System<br>罗马广场体验规范网站</h1>
